@@ -5,6 +5,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Bio } from '../../data/constants';
 
+const d = new Date();
+let year = d.getFullYear();
+
 const FooterContainer = styled.div`
   width: 100%;
   padding: 2rem 0;
@@ -88,7 +91,7 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterWrapper>
-        <Logo>Abhinv Jangra</Logo>
+        <Logo>Dhruv Vatsa</Logo>
         <Nav>
           <NavLink href="#about">About</NavLink>
           <NavLink href="#skills">Skills</NavLink>
@@ -103,7 +106,7 @@ function Footer() {
           <SocialMediaIcon href={Bio.insta} target="display"><InstagramIcon /></SocialMediaIcon>
         </SocialMediaIcons>
         <Copyright>
-          &copy; 2024 Abhinav Jangra. All rights reserved.
+          &copy; {year} Dhruv Vatsa. All rights reserved.
         </Copyright>
 
       </FooterWrapper>
