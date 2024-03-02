@@ -95,7 +95,7 @@ const Body = styled.div`
 const Role = styled.div`
     font-size: 18px;
     font-weight: 600;
-    color: ${({ theme }) => theme.text_primary + 99};
+    color: #ffffff;
     @media only screen and (max-width: 768px){
         font-size: 14px;
     }
@@ -104,7 +104,7 @@ const Role = styled.div`
 const Company = styled.div`
     font-size: 14px;
     font-weight: 500;
-    color: ${({ theme }) => theme.text_secondary + 99};
+    color: #ffffff;
     @media only screen and (max-width: 768px){
         font-size: 12px;
     }

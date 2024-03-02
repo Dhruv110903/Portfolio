@@ -93,7 +93,7 @@ const Body = styled.div`
 const Name = styled.div`
     font-size: 18px;
     font-weight: 600;
-    color: ${({ theme }) => theme.text_primary + 99};
+    color: #ffffff;
     @media only screen and (max-width: 768px){
         font-size: 14px;
     }
@@ -120,7 +120,7 @@ const Date = styled.div`
 const Grade = styled.div`
     font-size: 14px;
     font-weight: 500;
-    color: ${({ theme }) => theme.text_secondary + 99};
+    color: #ffffff;
     @media only screen and (max-width: 768px){
         font-size: 12px;
     }

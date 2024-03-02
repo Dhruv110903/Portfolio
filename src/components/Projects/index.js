@@ -9,7 +9,7 @@ const Projects = ({ openModal, setOpenModal }) => {
       <Wrapper>
         <Title>Projects</Title>
         <Desc>
-          I have worked on some very cool projects integrating machine learning models with interactive UI. Here are some of my projects.
+          I have worked on some very cool projects integrating frontend and backend technologies with interactive UI, Machine Learning Models. Here are some of my projects.
         </Desc>
         <CardContainer>
           {projects.map((project) => (

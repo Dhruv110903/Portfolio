@@ -1,10 +1,9 @@
 import React from 'react'
-import { Nav, NavLink, NavbarContainer, Span, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink } from './NavbarStyledComponent'
-import { DiCssdeck } from 'react-icons/di';
+import { Nav, NavLink, NavbarContainer, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileLink } from './NavbarStyledComponent'
 import { FaBars } from 'react-icons/fa';
 import { Bio } from '../../data/constants';
-// import { Close, CloseRounded } from '@mui/icons-material';
 import { useTheme } from 'styled-components';
+import logo from './logo-no-background.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -12,11 +11,10 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to='/'>
-        <div style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20px', cursor: 'pointer' }}>
-        <DiCssdeck size="3rem" /> <Span>Portfolio</Span>
-      </div>
+      <NavLogo to='/'>
+          <img src={logo} alt="Logo" style={{ width: '7.5rem', marginRight: '0.5rem' }} /> 
         </NavLogo>
+
         <MobileIcon>
           <FaBars onClick={() => {
             setIsOpen(!isOpen)

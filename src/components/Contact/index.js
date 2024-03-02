@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Snackbar } from "@mui/material";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Container = styled.div`
   display: flex;
@@ -97,11 +98,12 @@ const ContactInputMessage = styled.textarea`
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  height: 150px; /* Set the height to control the vertical size */
+  resize: vertical; /* Allow vertical resizing */v
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
   }
 `;
-
 const ContactButton = styled.input`
   width: 100%;
   text-decoration: none;
@@ -129,21 +131,94 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: hsla(271, 100%, 60%, 1);
+    background: linear-gradient(
+      225deg,
+      hsla(271, 100%, 60%, 1) 0%,
+      hsla(294, 100%, 60%, 1) 100%
+    );
+    background: -moz-linear-gradient(
+      225deg,
+      hsla(271, 100%, 60%, 1) 0%,
+      hsla(294, 100%, 60%, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      225deg,
+      hsla(271, 100%, 60%, 1) 0%,
+      hsla(294, 100%, 60%, 1) 100%
+    );
+  }
 `;
+
 
 const Contact = () => {
   //hooks
-  const [open, setOpen] = React.useState(false);
   const form = useRef();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+
+    const notify= () => toast.error('Something went wrong!!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+    const notifyerror= () => toast.error('Field Cannot be empty!!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+      const notifysuccess= () => toast.success('Email Sent Successfully!!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      
+
+    // Getting form values
+    const email = form.current['from_email'].value.trim();
+    const name = form.current['from_name'].value.trim();
+    const subject = form.current['subject'].value.trim();
+    
+    // Checking if email, name, and subject are not empty
+    if (!email || !name || !subject) {
+      console.log("Email, Name, and Subject are required.");
+      notifyerror();
+      return;
+    }
+  
+    // Sending the form if message could be empty
     emailjs.sendForm('service_kdr3qat', 'template_iqysfbc', form.current, 'z6L-Y5_P_xTjk77-J')
       .then((result) => {
-        setOpen(true);
         form.current.reset();
+        notifysuccess();
+
       }, (error) => {
         console.log(error.text);
+        notify();
+
       });
   };
 
@@ -162,13 +237,6 @@ const Contact = () => {
           <ContactInputMessage placeholder="Message" rows="4" name="message" />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={() => setOpen(false)}
-          message="Email sent successfully!"
-          severity="success"
-        />
       </Wrapper>
     </Container>
   );
