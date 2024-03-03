@@ -293,7 +293,7 @@ export const projects = [
     description:
     "Engaging portfolio site developed with React.js, showcasing skills, projects, experiences, education, and contact details, creating an immersive platform for professional interaction and exploration.",
     image:
-      "",
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-9a245.appspot.com/o/portfolio'.png?alt=media&token=83a54ff1-e486-4b6e-b3db-6b81e4c7dbc0",
     tags: 
     ["FireBase", 
     "EmailJs",
